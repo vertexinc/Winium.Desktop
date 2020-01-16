@@ -21,7 +21,10 @@
             var propertyName = this.ExecutedCommand.Parameters["NAME"].ToString();
 
             var element = this.Automator.ElementsRegistry.GetRegisteredElement(registeredKey);
-
+            if(element.Properties.Name == "City Row 1")
+            {
+                System.Console.WriteLine("asd2");
+            }
             try
             {
                 var property = AutomationPropertyHelper.GetAutomationProperty(propertyName);
