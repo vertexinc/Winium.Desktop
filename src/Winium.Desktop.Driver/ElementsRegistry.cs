@@ -75,6 +75,10 @@
                                 + safeInstanceCount.ToString(string.Empty, CultureInfo.InvariantCulture);
                 this.registeredElements.Add(registeredKey, element);
             }
+            else
+            {
+                registeredElements[registeredKey] = element;
+            }
 
             return registeredKey;
         }
