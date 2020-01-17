@@ -37,7 +37,6 @@
             {
                 Properties.Add(entry.Key, entry.Value);
             }
-            System.Console.WriteLine("asd");
         }
 
         #endregion
