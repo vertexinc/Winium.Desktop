@@ -29,11 +29,20 @@
                 .Where(f => f.FieldType == typeof(AutomationProperty))
                 .ToDictionary(f => f.Name, f => (AutomationProperty)f.GetValue(null));
 
-            Dictionary<string, AutomationProperty> dict = typeof(ValuePatternIdentifiers).GetFields(BindingFlags.Public | BindingFlags.Static)
+            Dictionary<string, AutomationProperty> valuePat = typeof(ValuePatternIdentifiers).GetFields(BindingFlags.Public | BindingFlags.Static)
               .Where(f => f.FieldType == typeof(AutomationProperty))
               .ToDictionary(f => f.Name, f => (AutomationProperty)f.GetValue(null));
 
-            foreach (KeyValuePair<string, AutomationProperty> entry in dict)
+            Dictionary<string, AutomationProperty> togglePat = typeof(TogglePatternIdentifiers).GetFields(BindingFlags.Public | BindingFlags.Static)
+              .Where(f => f.FieldType == typeof(AutomationProperty))
+              .ToDictionary(f => f.Name, f => (AutomationProperty)f.GetValue(null));
+
+            foreach (KeyValuePair<string, AutomationProperty> entry in valuePat)
+            {
+                Properties.Add(entry.Key, entry.Value);
+            }
+
+            foreach (KeyValuePair<string, AutomationProperty> entry in togglePat)
             {
                 Properties.Add(entry.Key, entry.Value);
             }
